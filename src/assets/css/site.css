@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+.div-table-cell { 
+    display: table-cell; 
+    vertical-align: top;
+}
+
+.div-table-row { 
+    display: table-row;
+    border: 1px solid black;
+}
+
+.div-table { display: table; }
+
+.book-info { float: left; }

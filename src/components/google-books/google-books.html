@@ -1,0 +1,32 @@
+<div>
+    <input ng-model="searchValue"/>
+    <input type="button" ng-click="search()" value="Search">
+</div>
+
+<div ng-show="results.items">
+    Total pages: {{totalPages}}
+    <div>
+        Current Page: {{pageNumber}}
+        <input type="button" value="<<" ng-click="back()" ng-disabled="pageNumber === 1"/>
+        <input type="button" value=">>" ng-click="forward()" ng-hide="pageNumber >= totalPages"/>
+    </div>
+</div>
+
+<div class="div-table">
+    <div class="div-table-row" ng-repeat="result in results.items">
+        <div class="div-table-cell">
+            <a href="{{result.volumeInfo.previewLink}}" target="_blank">
+                <img ng-src="{{result.volumeInfo.imageLinks.thumbnail}}">
+            </a>
+        </div>
+        <div class="div-table-cell">
+            <div>Title: {{result.volumeInfo.title}} - {{result.volumeInfo.subtitle}}</div>
+            <div>Rating: {{result.volumeInfo.averageRating}} stars</div>
+            <div>Author(s): <span ng-repeat="author in result.volumeInfo.authors">{{author}}, </span></div>
+            <div>Type: {{result.volumeInfo.printType}}</div>
+            <div ng-show="result.volumeInfo.pageCount">Page Count: {{result.volumeInfo.pageCount}}</div>
+            <div>Categorie(s): <span ng-repeat="categories in result.volumeInfo.categories">{{categories}}, </span></div>
+            <div>{{result.volumeInfo.description}}</div>
+        </div>
+    </div>
+</div>
